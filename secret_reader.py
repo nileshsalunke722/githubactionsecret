@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 import os
 
-token=os.getenv("MY_SECRET_TOKEN")
+token=os.getenv("TOKEN")
 print(f'Token:{token}')
 
 response = requests.get("https://jsonplaceholder.typicode.com/users")
