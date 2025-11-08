@@ -1,0 +1,26 @@
+name: API ETL Pipeline
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    read-api-data:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
+
+            - name: setup python enviroment 
+              uses: actions/setup-python@v6
+              with:
+                python-version: '3.10'
+
+            - name: installing dependancies 
+              run: pip install -r requirements.txt
+
+            - name: run script to read data from api
+              env:
+                TOKEN: ${{ secrets.MY_SECRET_TOKEN }}
+              run: python scret_reader.py
